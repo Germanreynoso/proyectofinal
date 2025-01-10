@@ -33,6 +33,10 @@ class QuizApp:
         self.timer_label = tk.Label(self.window, text="Tiempo restante: 10", font=("Arial", 12), bg="#f0f8ff")
         self.canvas.create_window(250, 300, window=self.timer_label)
 
+        self.lives = 3
+        self.lives_label = tk.Label(self.window, text=f"Vidas: {self.lives}", font=("Arial", 12), bg="#f0f8ff")
+        self.canvas.create_window(80, 20, window=self.lives_label)
+
         self.time_left = 10
         self.timer_running = False
         self.answered = False
@@ -40,6 +44,11 @@ class QuizApp:
         self.load_question()
 
     def load_question(self):
+        if self.lives == 0:
+            messagebox.showinfo("Juego terminado", f"¡Se acabaron tus vidas! Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
+            self.window.quit()
+            return
+        
         self.timer_running = False
         self.time_left = 10
         self.timer_running = True
@@ -68,22 +77,16 @@ class QuizApp:
 
     def mark_as_incorrect(self):
         if not self.answered:
-            self.answered = True
+            self.lives -= 1
+            self.lives_label.config(text=f"Vidas: {self.lives}")
             for btn in self.buttons:
                 btn.config(bg="#ff6347")
             correcta = self.quiz.questions[self.quiz.current_question]['respuesta']
             messagebox.showinfo("Incorrecto", f"¡Tiempo agotado! La respuesta correcta era: {correcta}", icon='warning')
             pygame.mixer.music.load("asset/fail-234710.mp3")
             pygame.mixer.music.play()
-            self.quiz.current_question += 1  # Incrementar la pregunta actual
-            self.window.after(1000, self.load_next_question)
-
-    def load_next_question(self):
-        if self.quiz.current_question < len(self.quiz.questions):
-            self.load_question()
-        else:
-            messagebox.showinfo("Juego terminado", f"Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
-            self.window.quit()
+            self.quiz.current_question += 1
+            self.window.after(1000, self.load_question)
 
     def check_answer(self, idx):
         if self.answered:
@@ -108,6 +111,9 @@ class QuizApp:
             messagebox.showinfo("Incorrecto", f"Respuesta incorrecta. La correcta era: {correcta}", icon='warning')
             pygame.mixer.music.load("asset/fail-234710.mp3")
             pygame.mixer.music.play()
+            self.lives -= 1
+            self.lives_label.config(text=f"Vidas: {self.lives}")
+        self.quiz.current_question += 1
         self.window.after(1000, self.load_question)
 
     def buttons_disabled(self):
