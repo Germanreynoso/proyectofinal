@@ -33,6 +33,18 @@ class QuizApp:
         self.timer_label = tk.Label(self.window, text="Tiempo restante: 10", font=("Arial", 12), bg="#f0f8ff")
         self.canvas.create_window(250, 300, window=self.timer_label)
 
+        self.lives_label = tk.Label(self.window, text=f"Vidas: {self.quiz.lives}", font=("Arial", 12), bg="#f0f8ff")
+        self.canvas.create_window(450, 20, window=self.lives_label)
+
+        self.hint_50_50_used = False
+        self.skip_question_used = False
+
+        self.hint_50_50_button = tk.Button(self.window, text="50/50", command=self.use_hint_50_50)
+        self.canvas.create_window(50, 20, window=self.hint_50_50_button)
+
+        self.skip_question_button = tk.Button(self.window, text="Saltar", command=self.skip_question)
+        self.canvas.create_window(150, 20, window=self.skip_question_button)
+
         self.time_left = 10
         self.timer_running = False
         self.answered = False
@@ -40,7 +52,7 @@ class QuizApp:
         self.load_question()
 
     def load_question(self):
-        if self.lives == 0:
+        if self.quiz.lives == 0:
             messagebox.showinfo("Juego terminado", f"¡Se acabaron tus vidas! Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
             self.window.quit()
             return
@@ -73,8 +85,9 @@ class QuizApp:
 
     def mark_as_incorrect(self):
         if not self.answered:
-            self.lives -= 1
-            self.lives_label.config(text=f"Vidas: {self.lives}")
+            self.answered = True
+            self.quiz.lives -= 1
+            self.lives_label.config(text=f"Vidas: {self.quiz.lives}")
             for btn in self.buttons:
                 btn.config(bg="#ff6347")
             correcta = self.quiz.questions_by_difficulty[self.quiz.difficulty][self.quiz.current_question]['respuesta']
@@ -85,7 +98,12 @@ class QuizApp:
             self.window.after(1000, self.load_next_question)
 
     def load_next_question(self):
-        if self.quiz.current_question < len(self.quiz.questions):
+        if self.quiz.lives <= 0:
+            messagebox.showinfo("Juego terminado", f"Te has quedado sin vidas. Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
+            self.quiz.reset_game()
+            self.lives_label.config(text=f"Vidas: {self.quiz.lives}")
+            self.load_question()
+        elif self.quiz.current_question < len(self.quiz.questions_by_difficulty[self.quiz.difficulty]):
             self.load_question()
         else:
             messagebox.showinfo("Juego terminado", f"Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
