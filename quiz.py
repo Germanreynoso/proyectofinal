@@ -43,7 +43,7 @@ class Quiz:
             self.score += 1
             result = True
         else:
-            self.lives -= 1
+            self.lives = max(0, self.lives - 1)
             result = False
         self.current_question += 1
         return result

@@ -86,7 +86,7 @@ class QuizApp:
     def mark_as_incorrect(self):
         if not self.answered:
             self.answered = True
-            self.quiz.lives -= 1
+            self.quiz.lives = max(0, self.quiz.lives - 1)
             self.lives_label.config(text=f"Vidas: {self.quiz.lives}")
             for btn in self.buttons:
                 btn.config(bg="#ff6347")
@@ -100,9 +100,7 @@ class QuizApp:
     def load_next_question(self):
         if self.quiz.lives <= 0:
             messagebox.showinfo("Juego terminado", f"Te has quedado sin vidas. Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
-            self.quiz.reset_game()
-            self.lives_label.config(text=f"Vidas: {self.quiz.lives}")
-            self.load_question()
+            self.window.quit()
         elif self.quiz.current_question < len(self.quiz.questions_by_difficulty[self.quiz.difficulty]):
             self.load_question()
         else:
@@ -132,7 +130,9 @@ class QuizApp:
             messagebox.showinfo("Incorrecto", f"Respuesta incorrecta. La correcta era: {correcta}", icon='warning')
             pygame.mixer.music.load("asset/fail-234710.mp3")
             pygame.mixer.music.play()
-        self.window.after(1000, self.load_question)
+            self.quiz.lives = max(0, self.quiz.lives - 1)
+            self.lives_label.config(text=f"Vidas: {self.quiz.lives}")
+        self.window.after(1000, self.load_next_question)
 
     def buttons_disabled(self):
         for btn in self.buttons:
