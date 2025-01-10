@@ -2,96 +2,115 @@
     {
         "pregunta": "¿Quién es conocido como el 'Rey del Rock'?",
         "opciones": ["Elvis Presley", "Chuck Berry", "Jimi Hendrix", "Little Richard"],
-        "respuesta": "Elvis Presley"
+        "respuesta": "Elvis Presley",
+         "dificultad": "fácil"
     },
     {
         "pregunta": "¿En qué año se publicó '1984' de George Orwell?",
         "opciones": ["1945", "1951", "1960", "1949"],
-        "respuesta": "1949"
+        "respuesta": "1949",
+         "dificultad": "fácil"
     },
     {
         "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
         "opciones": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
-        "respuesta": "George Washington"
+        "respuesta": "George Washington",
+        "dificultad": "medio"
     },
     {
         "pregunta": "¿En qué año cayó el Muro de Berlín?",
         "opciones": ["1987", "1989", "1990", "1992"],
-        "respuesta": "1989"
+        "respuesta": "1989",
+        "dificultad": "medio"
     },
     {
         "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
         "opciones": ["Miguel de Cervantes", "Lope de Vega", "Gabriel García Márquez", "Federico García Lorca"],
-        "respuesta": "Miguel de Cervantes"
+        "respuesta": "Miguel de Cervantes",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Quién ganó el Mundial de Fútbol de 2010?",
         "opciones": ["Brasil", "Argentina", "España", "Alemania"],
-        "respuesta": "España"
+        "respuesta": "España",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Cuál es la capital de Canadá?",
         "opciones": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
-        "respuesta": "Ottawa"
+        "respuesta": "Ottawa", 
+        "dificultad": "fácil"
     },
     {
         "pregunta": "¿Qué cantante popularizó el estilo musical conocido como 'Reggaetón'?",
         "opciones": ["Daddy Yankee", "Luis Fonsi", "Shakira", "Bad Bunny"],
-        "respuesta": "Daddy Yankee"
+        "respuesta": "Daddy Yankee",
+        "dificultad": "medio"
     },
     {
         "pregunta": "¿En qué año terminó la Primera Guerra Mundial?",
         "opciones": ["1914", "1917", "1918", "1920"],
-        "respuesta": "1918"
+        "respuesta": "1918",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Cuál es el río más largo del mundo?",
         "opciones": ["Río Amazonas", "Río Nilo", "Río Yangtsé", "Río Mississippi"],
-        "respuesta": "Río Amazonas"
+        "respuesta": "Río Amazonas",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Qué país es conocido como la 'Tierra del Sol Naciente'?",
         "opciones": ["China", "Corea del Sur", "Japón", "Vietnam"],
-        "respuesta": "Japón"
+        "respuesta": "Japón",
+        "dificultad": "medio"
     },
     {
         "pregunta": "¿Quién fue el autor de 'Cien años de soledad'?",
         "opciones": ["Gabriel García Márquez", "Mario Vargas Llosa", "Pablo Neruda", "Jorge Luis Borges"],
-        "respuesta": "Gabriel García Márquez"
+        "respuesta": "Gabriel García Márquez",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿En qué ciudad nació el pintor Pablo Picasso?",
         "opciones": ["Madrid", "Barcelona", "Malaga", "Sevilla"],
-        "respuesta": "Málaga"
+        "respuesta": "Málaga",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Cuál es el océano más grande del planeta?",
         "opciones": ["Atlántico", "Índico", "Pacífico", "Ártico"],
-        "respuesta": "Pacífico"
+        "respuesta": "Pacífico",
+        "dificultad": "medio"
     },
     {
         "pregunta": "¿Quién fue el líder de la Revolución Cubana?",
         "opciones": ["Che Guevara", "Fidel Castro", "Raúl Castro", "Juan Perón"],
-        "respuesta": "Fidel Castro"
+        "respuesta": "Fidel Castro",
+        "dificultad": "fácil"
     },
     {
         "pregunta": "¿Qué escritor escribió 'Matar a un ruiseñor'?",
         "opciones": ["Ernest Hemingway", "J.K. Rowling", "Harper Lee", "Mark Twain"],
-        "respuesta": "Harper Lee"
+        "respuesta": "Harper Lee",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Qué país ganó el primer mundial de fútbol en 1930?",
         "opciones": ["Brasil", "Uruguay", "Argentina", "Alemania"],
-        "respuesta": "Uruguay"
+        "respuesta": "Uruguay",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Quién pintó 'La última cena'?",
         "opciones": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "René Magritte"],
-        "respuesta": "Leonardo da Vinci"
+        "respuesta": "Leonardo da Vinci",
+        "dificultad": "difícil"
     },
     {
         "pregunta": "¿Dónde se encuentra la Torre Eiffel?",
         "opciones": ["Roma", "Londres", "París", "Berlín"],
-        "respuesta": "París"
+        "respuesta": "París",
+        "dificultad": "fácil"
     }
 ]
