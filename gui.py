@@ -68,13 +68,22 @@ class QuizApp:
 
     def mark_as_incorrect(self):
         if not self.answered:
+            self.answered = True
             for btn in self.buttons:
                 btn.config(bg="#ff6347")
-            correcta = self.quiz.questions[self.quiz.current_question - 1]['respuesta']
+            correcta = self.quiz.questions[self.quiz.current_question]['respuesta']
             messagebox.showinfo("Incorrecto", f"¡Tiempo agotado! La respuesta correcta era: {correcta}", icon='warning')
             pygame.mixer.music.load("asset/fail-234710.mp3")
             pygame.mixer.music.play()
-            self.window.after(1000, self.load_question)
+            self.quiz.current_question += 1  # Incrementar la pregunta actual
+            self.window.after(1000, self.load_next_question)
+
+    def load_next_question(self):
+        if self.quiz.current_question < len(self.quiz.questions):
+            self.load_question()
+        else:
+            messagebox.showinfo("Juego terminado", f"Tu puntaje final es {self.quiz.score} de {len(self.quiz.questions)}")
+            self.window.quit()
 
     def check_answer(self, idx):
         if self.answered:
