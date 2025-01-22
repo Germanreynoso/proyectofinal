@@ -29,34 +29,38 @@ class Quiz:
         self.current_question = 0
         self.score = 0
         self.lives = 3
-        self.difficulty = 'easy'
+        self.asked_questions = []
+        self.all_questions = self.questions_by_difficulty['easy'] + self.questions_by_difficulty['medium'] + self.questions_by_difficulty['hard']
+        random.shuffle(self.all_questions)
         self.save_progress()
 
     def get_question(self):
-        if self.current_question < len(self.questions_by_difficulty[self.difficulty]):
-            return self.questions_by_difficulty[self.difficulty][self.current_question]
+        if self.current_question_index < len(self.all_questions):
+            return self.all_questions[self.current_question_index]
         return None
 
     def check_answer(self, answer):
-        correct = self.questions_by_difficulty[self.difficulty][self.current_question]['respuesta']
+        correct = self.all_questions[self.current_question_index]['respuesta']
         if answer == correct:
             self.score += 1
             result = True
         else:
             self.lives = max(0, self.lives - 1)
             result = False
-        self.current_question += 1
+        self.current_question_index += 1
         return result
 
     def has_more_questions(self):
-        return self.current_question < len(self.questions_by_difficulty[self.difficulty])
+        return self.current_question_index < len(self.all_questions)
+
+    def is_game_over(self):
+        return self.lives == 0 or not self.has_more_questions()
 
     def save_progress(self):
         progress = {
-            'current_question': self.current_question,
+            'current_question_index': self.current_question_index,
             'score': self.score,
-            'lives': self.lives,
-            'difficulty': self.difficulty
+            'lives': self.lives
         }
         with open('progress.json', 'w', encoding='utf-8') as file:
             json.dump(progress, file)
@@ -65,9 +69,8 @@ class Quiz:
         try:
             with open('progress.json', 'r', encoding='utf-8') as file:
                 progress = json.load(file)
-                self.current_question = progress['current_question']
+                self.current_question_index = progress['current_question_index']
                 self.score = progress['score']
                 self.lives = progress['lives']
-                self.difficulty = progress['difficulty']
         except FileNotFoundError:
             pass
