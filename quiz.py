@@ -26,7 +26,7 @@ class Quiz:
             self.questions_by_difficulty = {'easy': [], 'medium': [], 'hard': []}
 
     def reset_game(self):
-        self.current_question = 0
+        self.current_question_index = 0
         self.score = 0
         self.lives = 3
         self.asked_questions = []

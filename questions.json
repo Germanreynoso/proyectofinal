@@ -73,7 +73,7 @@
     },
     {
         "pregunta": "¿En qué ciudad nació el pintor Pablo Picasso?",
-        "opciones": ["Madrid", "Barcelona", "Malaga", "Sevilla"],
+        "opciones": ["Madrid", "Barcelona", "Málaga", "Sevilla"],
         "respuesta": "Málaga",
         "dificultad": "difícil"
     },
